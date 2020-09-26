@@ -131,6 +131,70 @@ var table = $('#tbl_of_location').DataTable();
                 redirectPost('{{url("location_edit")}}', datas);
 
         });
+
+
+        $('.delete-button').click(function () {
+
+                    var reply = confirm('Are you sure to delete the record?');
+                    if (!reply) {
+                        return false;
+                    }
+                    var dlt_code = this.id;
+                    $.ajax({
+                        type: 'post',
+                        url: 'location_delete',
+                        data: {'dlt_code': dlt_code, '_token': $('input[name="_token"]').val()},
+                        dataType: 'json',
+                        success: function (datam) {
+
+                            if (datam.status == 1) {
+                                location_details();
+                                $.alert({
+                                    type: 'green',
+                                    icon: 'fa fa-check',
+                                    title: 'Success!!',
+                                    content: '<strong>SUCCESS:</strong> Location Deleted Successfully.'
+                                });
+                            } else {
+                                $.alert({
+                                    type: 'red',
+                                    icon: 'fa fa-warning',
+                                    title: 'Error!!',
+                                    content: '<strong>UNSUCCESS:</strong> Failed to Delete Data.'
+                                });
+                            }
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                        
+                            var msg = "<strong>Failed to Delete data.</strong><br/>";
+                            if (jqXHR.status !== 422 && jqXHR.status !== 400) {
+                                msg += "<strong>" + jqXHR.status + ": " + errorThrown + "</strong>";
+                            } else {
+                                if (jqXHR.responseJSON.hasOwnProperty('exception')) {
+                                    if (jqXHR.responseJSON.exception_code == 23000) {
+                                        msg += "Data Already Used!! Cannot Be Deleted.";
+                                    }
+                                } else {
+                                    msg += "Error(s):<strong><ul>";
+                                    $.each(jqXHR.responseJSON['errors'], function (key, value) {
+                                        msg += "<li>" + value + "</li>";
+                                    });
+                                    msg += "</ul></strong>";
+                                }
+                            }
+                            $.alert({
+                                type: 'red',
+                                icon: 'fa fa-warning',
+                                title: 'Error!!',
+                                content: msg
+                            });
+
+                        }
+                        // alert('hi');
+                    });
+
+        });
+
     });
 
   

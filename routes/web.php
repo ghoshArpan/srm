@@ -99,6 +99,7 @@ Route::get('/add_location','LocationController@add_location');
 Route::post('/location_save_update','LocationController@location_save_update');
 Route::post('/list_of_location','LocationController@list_of_location');
 Route::post('/location_edit','LocationController@location_edit');
+Route::post('/location_delete','LocationController@location_delete');
 
 
 

@@ -185,6 +185,42 @@ class LocationController extends Controller
         } 
     }
 
+    public function location_delete(Request $request){
 
+        $statusCode = 200;
+       
+       if (!$request->ajax()) {
+           $statusCode = 400;
+           $response = array('error' => 'Error occured in form submit.');
+           return response()->json($response, $statusCode);
+       }
+
+       $this->validate($request, [
+           'dlt_code' => 'required|integer',
+               ], [
+           'dlt_code.required' => 'Delete Code is required',
+           'dlt_code.integer' => 'Delete Code Accepted Only Integer',
+       ]);
+
+
+       try {
+           $dlt_data = Location::where('code', '=', $request->dlt_code); 
+           if (!empty($dlt_data)) {//Should be changed #30
+               $dlt_data = $dlt_data->delete();
+           }
+           $response = array(
+               'status' => 1 //Should be changed #32
+           );
+       } catch (\Exception $e) {
+           $response = array(
+               'exception' => true,
+               'exception_message' => $e->getMessage(),
+           );
+           $statusCode = 400;
+       } finally {
+           return response()->json($response, $statusCode);
+       }
+
+   }
 
 }
