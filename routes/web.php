@@ -92,6 +92,17 @@ Route::post('/get_all_shift','PostWiseSecurityAllocationController@get_all_shift
 
 
 
+
+// ********************************Location*********************************//
+Route::get('/location','LocationController@location');
+Route::get('/add_location','LocationController@add_location');
+Route::post('/location_save_update','LocationController@location_save_update');
+Route::post('/list_of_location','LocationController@list_of_location');
+Route::post('/location_edit','LocationController@location_edit');
+
+
+
+
 });
 
 
