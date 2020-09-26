@@ -47,6 +47,9 @@
                         <button id="save_update" type="submit" class="btn btn-primary">Search</button>
                     </div>
                 </div>
+                <div class="row form-group search_result">
+                    
+                </div>
                
                    {!! Form::close() !!}             
              
@@ -134,49 +137,15 @@
                     dataType: "json",
                     success: function (data) {
 
-                    //      if (data.status == 1) {
+                    var str = "";
+                    str += "<table class='table table-border'>";
+                    str += "<th><td>Sl No</td><td> Post </td><td> Designation </td></th>";
                     
-                    //     var msg = "<strong>SUCCESS: </strong>Department Saved Successfully";
-
-                    //     $.confirm({
-                    //     title: 'Success!',
-                    //     type: 'green',
-                    //     icon: 'fa fa-check',
-                    //     content: msg,
-                    //     buttons: {
-                    //         ok: function () {
-                                
-                    //             $('#department_form').get(0).reset();
-                    //              location.reload();
-                                
-                    //         }
-
-                    //     }
-                    // });
-                        
-                    // }
-                    // else if(data.status == 2)
-                    // {
-                    //      var msg = "<strong>SUCCESS: </strong>Department Updated Successfully";
-
-                    //     $.confirm({
-                    //     title: 'Success!',
-                    //     type: 'green',
-                    //     icon: 'fa fa-check',
-                    //     content: msg,
-                    //     buttons: {
-                    //         ok: function () {
-                              
-                    //              window.location.href = "department_details";
-                    //         }
-
-                    //     }
-                    // });
-
-                    // }
                      
                     
+                    str += "</table>";
 
+                    $(".search_result").append(str);
 
                     },
                     error: function (jqXHR, textStatus, errorThrown) {

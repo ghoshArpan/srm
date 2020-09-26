@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Location;
 use App\tbl_security_posts;
 use App\tbl_duty_shift;
+use App\tbl_designation;
 
 class PostWiseSecurityAllocationController extends Controller
 {
@@ -123,10 +124,16 @@ class PostWiseSecurityAllocationController extends Controller
             $post=$request->post;
             $shift=$request->shift;
            
-            $result=tbl_security_posts::
+            $result_post=tbl_security_posts::where('code', $post)->select('post_name','designation')->first();
+            $post_name=$result_post->post_name;
 
+            $des=$result_post->designation;
+            $desarr= explode(",",$des);
+
+            $designation=tbl_designation::wherein('code',$desarr)->select('designation')->get();
+           
             $response = array(
-              'options' => $shifts, 'status' => 1
+              'post' => $post_name,'designation' => $designation, 'status' => 1
             );
           }
           catch (\Exception $e) {
@@ -138,9 +145,6 @@ class PostWiseSecurityAllocationController extends Controller
           } finally {
             return response()->json($response, $statusCode);
           }
-
-
-
 
     }
 
