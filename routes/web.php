@@ -102,6 +102,17 @@ Route::post('/location_edit','LocationController@location_edit');
 Route::post('/location_delete','LocationController@location_delete');
 
 
+// ********************************Security Post Master*********************************//
+Route::get('/security_post_master','SecurityPostMasterController@security_post_master');
+Route::get('/add_security_post','SecurityPostMasterController@add_security_post');
+Route::post('/security_post_save','SecurityPostMasterController@security_post_save');
+Route::post('/get_all_designation','SecurityPostMasterController@get_all_designation');
+Route::post('/list_of_security_post','SecurityPostMasterController@list_of_security_post');
+Route::post('/security_post_edit','SecurityPostMasterController@security_post_edit');
+
+
+
+
 
 
 });

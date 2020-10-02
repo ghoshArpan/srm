@@ -46,7 +46,10 @@
       <link rel="stylesheet" href="{{ asset('frontend/css/sweetalert2.css') }}" />
       <link rel="stylesheet" href="{{ asset('frontend/css/select2.min.css') }}" />
       <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-toggle.min.css') }}" />
-
+      <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-multiselect.css') }}" />
+      <!-- <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-multiselect.css') }}"> -->
+      <!-- <link rel="stylesheet" href="{{ asset('frontend/css/multi-select.css') }}" /> -->
+      
        
 
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('/favicon_package/apple-touch-icon.png') }}">
@@ -70,7 +73,19 @@
         <script src="{{ asset('frontend/js/bootstrap-datepicker.min.js') }}"></script>
         <script src="{{ asset('frontend/js/sweetalert2.js') }}"></script> 
         <script src="{{ asset('frontend/js/select2.min.js') }}"></script>   
-        <script src="{{ asset('frontend/js/bootstrap-toggle.min.js') }}"></script>    
+        <script src="{{ asset('frontend/js/bootstrap-toggle.min.js') }}"></script>  
+        <script src="{{ asset('frontend/js/bootstrap-multiselect.js') }}"></script>  
+        
+       
+
+        <!-- <script src="{{ asset('frontend/js/bootstrap-multiselect.js') }}"></script> -->
+
+         <!--    Select2     -->
+
+         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" /> -->
+        
+
    </head>
    <body class="app">
       <div id="app">

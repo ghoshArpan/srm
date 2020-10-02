@@ -1,4 +1,4 @@
-<?php $title = 'Department'; ?>
+<?php $title = 'Location'; ?>
 @extends('layouts.master')
 @section('content')
    <div class="top-bar">
